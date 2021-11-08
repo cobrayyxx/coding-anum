@@ -1,0 +1,53 @@
+A = rand(5,3)
+b = rand(5,1)
+
+x_normal = A\b
+x_normal2 = (A'*A)\(A'*b)
+
+backwarderror = norm(b-A*x_normal,2)
+x_random = rand(3,1)
+backwarderror_random = norm(b-A*x_random,2)
+
+### nol kan kolom pertama
+u1 = A(:,1)
+vh1 = u1 + norm(u1,2)*[1;0;0;0;0]
+
+H = eye(5) - 2/(vh1'*vh1)*(vh1*vh1')
+HA_adhoc = H*A
+
+u1 = u1 - 2*(vh1'*u1)/(vh1'*vh1)*vh1
+u2 = A(:,2)
+u2 = u2 - 2*(vh1'*u2)/(vh1'*vh1)*vh1
+u3 = A(:,3)
+u3 = u3 - 2*(vh1'*u3)/(vh1'*vh1)*vh1
+
+HA = [u1 u2 u3]
+HA_adhoc
+
+b1 = b - 2*(vh1'*b)/(vh1'*vh1)*vh1
+
+# nol kan kolom kedua
+A1 = HA
+u2 = A1(2:5,2)
+vh2 = u2 + norm(u2,2)*[1;0;0;0]
+u2 = u2 - 2*(vh2'*u2)/(vh2'*vh2)*vh2
+
+u3 = A1(2:5,3)
+u3 = u3 - 2*(vh2'*u3)/(vh2'*vh2)*vh2
+A2=A1
+A2(2:5,2) = u2
+A2(2:5,3) = u3
+
+# nol kan kolom ketiga
+u3 = A2(3:5,3)
+vh3 = u3 + norm(u3,2)*[1;0;0]
+u3 = u3 - 2*(vh3'*u3)/(vh3'*vh3)*vh3
+A3 = A2
+A3(3:5,3) = u3
+
+# update b
+b2 = b1
+b2(2:5) = b2(2:5) - 2*(vh2'*b2(2:5))/(vh2'*vh2)*vh2
+
+b3 = b2
+b3(3:5) = b3(3:5) - 2*(vh3'*b3(3:5))/(vh3'*vh3)*vh3x

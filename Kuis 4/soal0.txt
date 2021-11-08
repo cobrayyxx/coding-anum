@@ -1,0 +1,5 @@
+Matriks tridiagonal ketika dimasukkan kedalam fungsi lutrid, maka matriks tersebut akan memiliki matriks segitiga bawah L dengan dua diagonal dengan diagonal utamanya berisi satu dan karena matriks L merupakan matriks segitiga bawah, nilai diatas diagonal utama bernilai nol.
+
+
+
+Matriks tridiagonal juga akan memiliki matriks segitiga atas U ketika dimasukkan ke dalam fungsi lutrid. Matriks U sama seperti matriks tridiagonal, namun hanya memiliki 2 diagonal dengan nilai dibawah diagonal utama menjadi nol.

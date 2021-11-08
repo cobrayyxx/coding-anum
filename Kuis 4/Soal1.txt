@@ -1,0 +1,4 @@
+Operasi pengurangan terjadi sebanyak 30 kali
+Operasi perkalian terjadi sebanyak 30 kali
+Operasi pembagian terjadi sebanyak 5 kali
+Operasi penjumlahan terjadi sebanyak 0 kali
