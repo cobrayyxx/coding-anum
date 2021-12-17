@@ -7,5 +7,4 @@ function [x0,count] = optnewton(x0, tol, maxiter)
     x0 = x0-d;
     g = gradfd(x0);
     count = count+1;
-
   endwhile

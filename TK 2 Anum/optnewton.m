@@ -1,6 +1,8 @@
-function [x0,count] = optnewton(x0, tol, maxiter)
+function [x0,count] = optnewton(x0)
   g = gradfd(x0);
-  count = 1;
+  count = 0;
+  tol = 10^-6;
+  maxiter=5;
   while norm(g)>tol && count<maxiter
     H = Hessianfd(x0);
     d = H\g;
